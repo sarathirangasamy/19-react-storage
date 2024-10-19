@@ -2,24 +2,21 @@ import "./style.css";
 
 import { useEffect, useState } from "react";
 
-interface ProfileDetails {
+interface TodoDetails {
   name: string;
   email: string;
   mobile: string;
 }
 
-export const ProfileInfo: React.FC = () => {
-  const [profileDetails, setProfileDetails] = useState<ProfileDetails>({
+export const Todo: React.FC = () => {
+  const [profileDetails, setTodoDetails] = useState<TodoDetails>({
     name: "",
     email: "",
     mobile: "",
   });
   const [isEdit, setIsEdit] = useState<boolean>(false);
   const [editIndex, setEditIndex] = useState<number | null>(null);
-
-  const [allProfileDetails, setAllProfileDetails] = useState<ProfileDetails[]>(
-    []
-  );
+  const [allTodoDetails, setAllTodoDetails] = useState<TodoDetails[]>([]);
 
   useEffect(() => {
     getAllProfile();
@@ -27,12 +24,12 @@ export const ProfileInfo: React.FC = () => {
 
   function getAllProfile() {
     const getTotoListDetails = JSON.parse(localStorage.getItem("toDO") || "[]");
-    setAllProfileDetails(getTotoListDetails || []);
+    setAllTodoDetails(getTotoListDetails || []);
   }
 
   const onChangeInputField = (fieldValue: any, type: string) => {
     const value = fieldValue.target.value;
-    setProfileDetails((prev) => ({
+    setTodoDetails((prev) => ({
       ...prev,
       [type]: value,
     }));
@@ -46,14 +43,14 @@ export const ProfileInfo: React.FC = () => {
     const getTotoListDetails = JSON.parse(localStorage.getItem("toDO") || "[]");
 
     if (isEdit) {
-      const itemIndex = allProfileDetails?.findIndex(
+      const itemIndex = allTodoDetails?.findIndex(
         (profile, index) => index === editIndex
       );
 
       const updatedTodo = [
-        ...allProfileDetails.slice(0, itemIndex),
-        Object.assign({}, allProfileDetails[itemIndex], profileDetails),
-        ...allProfileDetails.slice(itemIndex + 1),
+        ...allTodoDetails.slice(0, itemIndex),
+        Object.assign({}, allTodoDetails[itemIndex], profileDetails),
+        ...allTodoDetails.slice(itemIndex + 1),
       ];
 
       localStorage.setItem("toDO", JSON.stringify(updatedTodo));
@@ -66,7 +63,7 @@ export const ProfileInfo: React.FC = () => {
       localStorage.setItem("toDO", JSON.stringify(getTotoListDetails));
     }
 
-    setProfileDetails({
+    setTodoDetails({
       name: "",
       email: "",
       mobile: "",
@@ -76,14 +73,14 @@ export const ProfileInfo: React.FC = () => {
     getAllProfile();
   };
 
-  const onEditTodo = (profileDetails: ProfileDetails, index: number) => {
+  const onEditTodo = (profileDetails: TodoDetails, index: number) => {
     setIsEdit(true);
-    setProfileDetails(profileDetails);
+    setTodoDetails(profileDetails);
     setEditIndex(index);
   };
 
   const onDeleteTodo = (indexNumber: number) => {
-    const removeTodoValue = allProfileDetails?.filter(
+    const removeTodoValue = allTodoDetails?.filter(
       (profile, index) => index !== indexNumber
     );
     localStorage.setItem("toDO", JSON.stringify(removeTodoValue));
@@ -133,8 +130,8 @@ export const ProfileInfo: React.FC = () => {
       </div>
 
       <div className="container">
-        {allProfileDetails?.length ? <h4>Toto List</h4> : null}
-        {allProfileDetails?.map((profile, index) => (
+        {allTodoDetails?.length ? <h4>Toto List</h4> : null}
+        {allTodoDetails?.map((profile, index) => (
           <div className="custom-table" key={index}>
             <div>
               <h4>Name: {profile.name || ""}</h4>

@@ -1,12 +1,12 @@
 import "./App.css";
 
 import React from "react";
-import { ProfileInfo } from "./profile";
+import { Todo } from "./profile";
 
 function App() {
   return (
     <div>
-      <ProfileInfo />
+      <Todo />
     </div>
   );
 }
