@@ -1,0 +1,77 @@
+.container {
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+  align-items: center;
+}
+
+.todo-create-form {
+  width: 50%;
+  height: "auto";
+  border-radius: 10px;
+  background-color: #d9d9d9;
+  padding: 20px;
+}
+
+.primary-txt {
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 4px;
+}
+
+.custom-input-design {
+  width: 50%;
+  padding: 9px;
+  border-radius: 8px;
+  border: 1px solid gray;
+}
+
+.custom-btn {
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid gray;
+  background: #ffffff;
+  display: flex;
+  margin: "auto";
+  cursor: pointer;
+}
+.custom-btn:hover {
+  border: 1px solid rgb(195, 143, 143);
+  background: rgb(226, 194, 194);
+}
+
+.custom-table {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  column-gap: 40px;
+  background: aliceblue;
+  padding: 6px 22px 17px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  min-width: 50%;
+  justify-content: space-around;
+}
+
+.custom-edit-btn {
+  padding: 5px 15px;
+  background: #ffffff;
+  cursor: pointer;
+  border-radius: 8px;
+  border: 1px solid gray;
+}
+
+.custom-delete-btn {
+  padding: 5px 15px;
+  margin-left: 2px;
+  background: red;
+  cursor: pointer;
+  border-radius: 8px;
+  color: #ffffff;
+  border: 1px solid gray;
+}
