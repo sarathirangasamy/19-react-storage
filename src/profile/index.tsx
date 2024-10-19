@@ -1,6 +1,6 @@
-import './style.css';
+import "./style.css";
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
 interface ProfileDetails {
   name: string;
@@ -45,7 +45,7 @@ export const ProfileInfo: React.FC = () => {
 
     const getTotoListDetails = JSON.parse(localStorage.getItem("toDO") || "[]");
 
-    if (!editIndex) {
+    if (isEdit) {
       const itemIndex = allProfileDetails?.findIndex(
         (profile, index) => index === editIndex
       );
